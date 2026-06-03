@@ -30,7 +30,7 @@ import {
       )
       .join("%0A")
   
-    const whatsappLink = `https://wa.me/7759449730?text=
+    const whatsappLink = `https://wa.me/77479105310?text=
   Сәлем! Мен тапсырыс бергім келеді:%0A%0A
   ${whatsappMessage}%0A%0A
   Жалпы: ${totalPrice.toLocaleString()} ₸`
