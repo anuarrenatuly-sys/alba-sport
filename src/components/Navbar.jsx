@@ -36,7 +36,7 @@ import {
   
             <div>
               <h1 className="text-2xl font-black tracking-wide">
-                QADAM SPORT
+                ALBA SPORT
               </h1>
             </div>
   
