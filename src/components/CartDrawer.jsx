@@ -6,6 +6,8 @@ import {
   } from "lucide-react"
   
   import { useCart } from "../context/CartContext"
+  import { useState } from "react"
+import CheckoutModal from "./CheckoutModal"
   
   function CartDrawer({ open, setOpen }) {
     const {
@@ -14,6 +16,9 @@ import {
       increaseQuantity,
       decreaseQuantity,
     } = useCart()
+
+    const [checkoutOpen, setCheckoutOpen] =
+  useState(false)
   
     const totalPrice = cart.reduce((acc, item) => {
       const price = parseInt(
@@ -22,18 +27,6 @@ import {
   
       return acc + price * item.quantity
     }, 0)
-  
-    const whatsappMessage = cart
-      .map(
-        (item) =>
-          `${item.title} x${item.quantity} - ${item.price}`
-      )
-      .join("%0A")
-  
-    const whatsappLink = `https://wa.me/77479105310?text=
-  Сәлем! Мен тапсырыс бергім келеді:%0A%0A
-  ${whatsappMessage}%0A%0A
-  Жалпы: ${totalPrice.toLocaleString()} ₸`
   
     return (
       <>
@@ -135,15 +128,23 @@ import {
               </span>
             </div>
   
-            <a
-              href={whatsappLink}
-              target="_blank"
-              className="block w-full bg-black text-white py-4 rounded-2xl hover:bg-orange-500 transition font-semibold text-center"
-            >
-              WhatsApp арқылы тапсырыс
-            </a>
+            <button
+  onClick={() =>
+    setCheckoutOpen(true)
+  }
+  className="w-full bg-black text-white py-4 rounded-2xl hover:bg-orange-500 transition font-semibold"
+>
+  Тапсырысты рәсімдеу
+</button>
+
           </div>
         </div>
+        <CheckoutModal
+  open={checkoutOpen}
+  setOpen={setCheckoutOpen}
+  cart={cart}
+  totalPrice={totalPrice}
+/>
       </>
     )
   }

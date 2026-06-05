@@ -5,6 +5,7 @@ import {
     Menu,
     Moon, 
     Sun,
+    User,
   } from "lucide-react"
   
   import { useCart } from "../context/CartContext"
@@ -14,15 +15,22 @@ import {
   import CartDrawer from "./CartDrawer"
   import MobileMenu from "./MobileMenu"
   import { Link } from "react-router-dom"
+  import { useAuth } from "../context/AuthContext"
+  import AuthModal from "./AuthModal"
   
   function Navbar() {
     const { cart } = useCart()
+
+    const { user } = useAuth()
 
     const { darkMode, toggleTheme } =
   useTheme()
   
     const [open, setOpen] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
+
+    const [authOpen, setAuthOpen] =
+  useState(false)
   
     const totalItems = cart.reduce(
       (acc, item) => acc + item.quantity,
@@ -49,7 +57,13 @@ import {
   
             <div className="flex items-center gap-4">
   
-              <Search className="w-5 h-5 cursor-pointer" />
+            <button
+  onClick={() =>
+    setAuthOpen(true)
+  }
+>
+  <User className="w-5 h-5 cursor-pointer" />
+</button>
 
               {/* 
 <button onClick={toggleTheme}>
@@ -90,6 +104,12 @@ import {
           open={open}
           setOpen={setOpen}
         />
+
+<AuthModal
+  open={authOpen}
+  setOpen={setAuthOpen}
+/>
+
         <MobileMenu
   open={menuOpen}
   setOpen={setMenuOpen}
