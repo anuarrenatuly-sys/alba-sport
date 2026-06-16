@@ -16,7 +16,7 @@ function CheckoutModal({
 
   if (!open) return null
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const products = cart
       .map(
         (item) =>
@@ -41,37 +41,15 @@ function CheckoutModal({
   ${totalPrice.toLocaleString()} ₸
   `
   
-    try {
-      const response = await fetch(
-        "/api/send-order",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-          body: JSON.stringify({
-            message,
-          }),
-        }
-      )
+    const whatsappUrl =
+      `https://wa.me/77479105310?text=${encodeURIComponent(message)}`
   
-      if (response.ok) {
-        alert(
-          "Тапсырыс жіберілді!"
-        )
+    window.open(
+      whatsappUrl,
+      "_blank"
+    )
   
-        setOpen(false)
-      } else {
-        alert(
-          "Қате пайда болды"
-        )
-      }
-    } catch (error) {
-      alert(
-        "Сервермен байланыс жоқ"
-      )
-    }
+    setOpen(false)
   }
 
   return (

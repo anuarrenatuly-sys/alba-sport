@@ -10,9 +10,16 @@ function ProductCard({ product }) {
     useFavorites()
 
   return (
-    <div className="group bg-white dark:bg-[#1a1a1a] rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300">
+    <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-300">
       
       <div className="relative overflow-hidden">
+      <div className="absolute top-4 left-4 z-10 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+  NEW
+</div>
+
+<div className="absolute bottom-4 left-4 z-10 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-semibold">
+  ⭐ 4.9
+</div>
       <Link to={`/product/${product.id}`}>
         <img
           src={product.image}
@@ -36,7 +43,7 @@ function ProductCard({ product }) {
 </button>
       </div>
 
-      <div className="p-5">
+      <div className="p-5 space-y-2">
         <p className="text-sm text-gray-500 mb-2">
           {product.category}
         </p>
@@ -45,6 +52,10 @@ function ProductCard({ product }) {
   <h3 className="text-xl font-bold mb-2 hover:text-orange-500 transition">
     {product.title}
   </h3>
+
+  <p className="text-sm text-gray-500">
+  Жоғары сапалы спорттық киім
+</p>
 </Link>
 
         <div className="flex items-center justify-between">
@@ -53,11 +64,11 @@ function ProductCard({ product }) {
           </p>
 
           <button
-            onClick={() => addToCart(product)}
-            className="bg-black text-white px-5 py-2 rounded-xl hover:bg-orange-500 transition"
-          >
-            Сатып алу
-          </button>
+  onClick={() => addToCart(product)}
+  className="bg-black text-white px-5 py-2 rounded-xl hover:bg-orange-500 transition hover:scale-105"
+>
+  Себетке қосу
+</button>
         </div>
       </div>
     </div>

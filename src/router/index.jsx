@@ -5,6 +5,8 @@ import MainLayout from "../layout/MainLayout"
 import Home from "../pages/Home"
 import ProductDetails from "../pages/ProductDetails"
 import Favorites from "../pages/Favorites"
+import Profile from "../pages/Profile"
+import Catalog from "../pages/Catalog"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/favorites",
         element: <Favorites />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/catalog",
+        element: <Catalog />,
       },
     ],
   },

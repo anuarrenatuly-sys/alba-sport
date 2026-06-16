@@ -14,6 +14,7 @@ function Products() {
     "Костюм",
     "Футболка",
     "Oversize",
+    "Аяқ киім",
   ]
 
   const filteredProducts = productsData.filter(
@@ -75,7 +76,7 @@ function Products() {
       {/* products */}
       {filteredProducts.length > 0 ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredProducts.map((product) => (
+          {filteredProducts.slice(0, 4).map((product) => (
             <ProductCard
               key={product.id}
               product={product}
