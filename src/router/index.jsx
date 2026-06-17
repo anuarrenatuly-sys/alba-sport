@@ -10,19 +10,7 @@ import Catalog from "../pages/Catalog"
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-6xl font-black mb-4">
-            ALBA SPORT
-          </h1>
-    
-          <p className="text-xl text-gray-400">
-            Сайт уақытша жаңартылуда
-          </p>
-        </div>
-      </div>
-    ),
+    element: <MainLayout />,
     children: [
       {
         path: "/",
